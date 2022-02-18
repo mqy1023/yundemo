@@ -1,0 +1,24 @@
+<wxs module="public" src="../../wxs/public.wxs"></wxs>
+
+<view class="detail">
+    <view class="title">{{detail.title}}</view>
+    <view class="info">
+      <view class="row">作者：{{detail.author}}</view>
+      <view class="row">发布时间：{{public.getTime(detail._createTime,1)}}</view>
+      <view class="row" wx:if="{{detail.hits}}">阅读量：{{public.getNumber(detail.hits)}}次</view>
+      <view class="content">
+        <rich-text nodes="{{detail.content}}"></rich-text>
+      </view>
+    </view>
+    <view class="recommend {{detail.onlike?'active':''}}" bindtap="clickLike">
+      <view class="num">{{detail.zanSize}}</view>
+    </view>
+
+    <view class="userinfo" wx:if="{{detail.userArr.length}}">
+      <view class="text">- 赞过的用户 -</view>
+      <view class="picgroup">
+        <image wx:for="{{detail.userArr}}" wx:key="index" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+      </view>
+    </view>
+
+</view>

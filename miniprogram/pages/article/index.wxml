@@ -1,0 +1,29 @@
+<view class="out">  
+  <view class="list">    
+    <view class="row" wx:for="{{listArr}}" wx:key="index">
+      <navigator class="box" url="/pages/detail/detail?id={{item._id}}&index={{index}}">
+        <view class="pic">
+          <image class="img" mode="contain" src="{{item.picurl}}"/>
+        </view>
+        <view class="text">
+          <view class="title">{{item.title}}</view>
+          <view class="info">
+            <view>{{item._createTime}}</view>
+            <view wx:if="{{item.hits}}"><van-icon name="eye-o" />{{item.hits}}</view>
+            <view>{{item.zanSize?item.zanSize:""}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="loading">
+    <view>
+      <view wx:if="{{loading}}"> 加载中...</view>
+      <view wx:else=""> 没有更多了~</view>
+    </view>
+  </view>
+</view>
+
+
+
